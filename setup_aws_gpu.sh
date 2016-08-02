@@ -8,7 +8,7 @@
 # http://www.bazel.io/docs/install.html#ubuntu
 
 # Launch from EC2 console (not from the market place) and 
-# ensure that we have the `/media/ephemeral0/` storage:
+# ensure that we have the `/media/ephemeral0/` storage (Instance Store 0):
 # you are entitled to 60GB, but you do not get them by default!
 
 # check device mapping
@@ -68,6 +68,10 @@ pip install pydot-ng seaborn
 
 ## cudnnn
 conda install -c ostrokach cudnn=4.0
+
+# protobuf
+conda build protobuf --no-activate
+anaconda upload /media/ephemeral0/anaconda/conda-bld/linux-64/protobuf-3.0.0b2-py35_1.tar.bz2
 
 ## tensorflow
 sudo rm -rf /usr/local/include
