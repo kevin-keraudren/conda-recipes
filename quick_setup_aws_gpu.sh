@@ -6,6 +6,7 @@ set -e
 # Anaconda set-up for https://aws.amazon.com/marketplace/pp/B00FYCDDTE
 # Amazon Linux AMI with NVIDIA GRID GPU Driver
 # g2.x2large has compute capability 3.0
+# US East (N. Virginia)	ami-2e5e9c43
 
 # https://github.com/jjhelmus/wip_conda_recipes/tree/master/tensorflow
 # http://www.bazel.io/docs/install.html#ubuntu
@@ -62,7 +63,7 @@ conda install -y -c kevin-keraudren tensorflow
 pip install git+https://github.com/fchollet/keras.git --upgrade
 
 # Do some cleaning
-sudo yum clean
+sudo yum clean all
 conda clean -all -y
 
 ## Install the necessary tools to survive in a terminal
@@ -73,9 +74,13 @@ cd /media/ephemeral0/anaconda/bin/
 wget https://raw.githubusercontent.com/gnachman/iTerm2/master/tests/imgcat
 chmod +x imgcat
 
+# get lynx config file
+cd
+wget https://raw.githubusercontent.com/kevin-keraudren/conda-recipes/master/.lynxrc
+
 cd /tmp
 
 echo "Now get the data!"
-echo lynx https://www.kaggle.com/c/ultrasound-nerve-segmentation/data
-echo mkdir -p /tmp/data && unzip train.zip -d data/train
-echo mkdir -p /tmp/data && unzip test.zip -d data/test
+echo lynx -cfg=~/.lynxrc https://www.kaggle.com/c/ultrasound-nerve-segmentation/data
+echo mkdir -p /tmp/data && unzip train.zip -d data
+echo mkdir -p /tmp/data && unzip test.zip -d data
