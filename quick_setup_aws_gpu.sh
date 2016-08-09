@@ -61,6 +61,7 @@ conda install -y -c kevin-keraudren tensorflow
 
 ## Install latest Keras
 pip install git+https://github.com/fchollet/keras.git --upgrade
+echo export KERAS_BACKEND=tensorflow >> ~/.bashrc
 
 # Do some cleaning
 sudo yum clean all
